@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+  <head>
+    <title>
+      Hello
+    </title>
+  </head>
+  <body>
+    <div id="css">
+      <p>Hello World</p>
+    </div>
+    <script src="../css.min.js">
+    </script>
+    <script>
+      var start = 0, number = 0;
+      function sine(){
+        number = Math.sin( start );
+        start += 0.01;
+        return number;
+      }
+
+      function color() {
+        var letters = '0123456789ABCDEF'.split('');
+        var color = '#';
+        for (var i = 0; i < 6; i++ ) {
+            color += letters[Math.abs(Math.ceil(sine() * 16))];
+        }
+        return color;
+      }
+      function run(){
+        css('#css').font('italic bold 20px arial,serif').color(color());
+      }
+      window.setInterval(run, 1000/30 );
+    </script>
+  </body>
+</html>
